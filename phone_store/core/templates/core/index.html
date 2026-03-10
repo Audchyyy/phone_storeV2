@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <video autoplay muted loop class="hero-video">
+    <source src="{{ url_for('static', filename='video/555.mp4') }}" type="video/mp4">
+  </video>
+</section>
+
+<section class="product">
+  <video class="product-video" autoplay muted loop>
+    <source src="{{ url_for('static', filename='video/Macbook.mp4') }}" type="video/mp4">
+  </video>
+  <div class="product-title">MacBook Air</div>
+  <h2 class="apple-headline">ก้าวข้ามทุกความเร็ว</h2>
+  <p class="chip-info">พลังเร็วติดปีก</p>
+  <div class="purchase-bar">
+    <span class="price-text">เริ่มต้นที่ ฿56,900</span>
+    <a class="buy-button" href="{{ url_for('product.mac_detail', id=mac.id) if mac else url_for('product.mac') }}">เลือกซื้อ</a>
+  </div>
+</section>
+
+<section class="products">
+  <div class="product-card" id="iphone-card">
+    <div class="product-content-right">
+      <div class="product-info">
+        <h1>iPhone 17 Pro</h1>
+        <p>ที่สุดของความโปร</p>
+      </div>
+      <div class="purchase-bar">
+        <a class="buy-button" href="{{ url_for('product.iphone_detail', id=iphone.id) if iphone else url_for('product.iphone') }}">เลือกซื้อ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products-row">
+  <div class="small-card" id="ipad-card">
+    <video autoplay muted loop playsinline class="card-video">
+      <source src="{{ url_for('static', filename='video/iPad.mp4') }}" type="video/mp4">
+    </video>
+    <div class="small-card-content pos-center">
+      <h1 class="apple-gradient-text">iPad Pro</h1>
+      <p>อัดฉีดพลังแรงๆๆๆๆ</p>
+      <div class="purchase-bar-small">
+        <a class="buy-button-small" href="{{ url_for('product.ipad_detail', id=ipad.id) if ipad else url_for('product.ipad') }}">เลือกซื้อ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="small-card" id="watch-card">
+    <video autoplay muted loop playsinline class="card-video">
+      <source src="{{ url_for('static', filename='video/Watch.mp4') }}" type="video/mp4">
+    </video>
+    <div class="small-card-content pos-center">
+      <h1 class="apple-gradient-text">Apple Watch Ultra</h1>
+      <p>นาฬิกาสปอร์ตและการผจญภัยที่เหนือชั้น</p>
+      <div class="purchase-bar-small">
+        <a class="buy-button-small" href="{{ url_for('product.watch_detail', id=watch.id) if watch else url_for('product.watch') }}">เลือกซื้อ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="small-card" id="airpods-card">
+    <video autoplay muted loop playsinline class="card-video">
+      <source src="{{ url_for('static', filename='video/AirPods.mp4') }}" type="video/mp4">
+    </video>
+    <div class="small-card-content pos-center">
+      <h1 class="apple-gradient-text">AirPods Pro 3</h1>
+      <p>การตัดเสียงรบกวนแบบแอ็คทีฟ ในแบบที่คุณไม่เคยได้ยินมาก่อน</p>
+      <div class="purchase-bar-small">
+        <a class="buy-button-small" href="{{ url_for('product.airpods_detail', id=airpods.id) if airpods else url_for('product.airpods') }}">เลือกซื้อ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,240 @@
+/* ─── MAC PAGE ─── */
+.mac-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+}
+
+/* Hero */
+.mac-hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 3rem;
+}
+
+.mac-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #1d1d1f;
+    margin-bottom: 0.4rem;
+}
+
+.mac-hero-sub {
+    font-size: 1.1rem;
+    color: #6e6e73;
+}
+
+/* Toolbar */
+.mac-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.btn-add {
+    background: #0071e3;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.btn-add:hover { background: #0077ed; }
+
+/* Grid */
+.mac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Card */
+.mac-card {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.04);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.mac-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.1);
+}
+
+/* Badge */
+.mac-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: #ff3b30;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+    z-index: 1;
+}
+
+/* Media */
+.mac-card-media {
+    background: #f5f5f7;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.mac-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.mac-card:hover .mac-card-img {
+    transform: scale(1.04);
+}
+
+.mac-icon {
+    font-size: 5rem;
+    color: #1d1d1f;
+    opacity: 0.5;
+}
+
+/* Body */
+.mac-card-body {
+    padding: 1.4rem;
+}
+
+.mac-card-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.3rem;
+}
+
+.mac-card-sub {
+    font-size: 0.82rem;
+    color: #6e6e73;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+.mac-card-price {
+    font-size: 0.88rem;
+    color: #1d1d1f;
+    margin-bottom: 1rem;
+}
+
+/* Action buttons */
+.mac-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.btn-learn {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem;
+    border: 1px solid #0071e3;
+    border-radius: 8px;
+    color: #0071e3;
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: background 0.2s;
+}
+
+.btn-learn:hover { background: #f0f7ff; }
+
+.btn-buy {
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem;
+    background: #0071e3;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: background 0.2s;
+}
+
+.btn-buy:hover { background: #0077ed; }
+
+/* CRUD */
+.mac-crud {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.btn-edit {
+    flex: 1;
+    text-align: center;
+    padding: 0.4rem;
+    background: #f5f5f7;
+    border: 1px solid #d2d2d7;
+    border-radius: 6px;
+    color: #0071e3;
+    text-decoration: none;
+    font-size: 0.78rem;
+}
+
+.btn-edit:hover { background: #e8e8ed; }
+
+.btn-delete {
+    flex: 1;
+    padding: 0.4rem;
+    background: #fff;
+    border: 1px solid #ffcccc;
+    border-radius: 6px;
+    color: #ff3b30;
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.btn-delete:hover { background: #fff5f5; }
+
+/* Empty */
+.mac-empty {
+    text-align: center;
+    padding: 5rem 0;
+    color: #6e6e73;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.mac-empty i { font-size: 3.5rem; color: #d2d2d7; }
+
+/* Alert */
+.alert-success {
+    padding: 0.75rem 1rem;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+}
+
+.alert-danger {
+    padding: 0.75rem 1rem;
+    background: #ffe5e5;
+    color: #ff3b30;
+    border: 1px solid #ffcccc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+}

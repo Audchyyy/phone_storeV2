@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block styles %}
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+<style>
+  :root { --bg:#f5f5f7;--white:#fff;--ink:#1d1d1f;--muted:#6e6e73;--border:#d2d2d7;--blue:#0071e3; }
+  .detail-page { background:var(--bg);min-height:calc(100vh - 44px); }
+  .detail-wrap { max-width:1100px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center; }
+  @media(max-width:768px) { .detail-wrap { grid-template-columns:1fr;gap:2rem; } }
+  .viewer-wrap { background:var(--white);border-radius:24px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);aspect-ratio:1;display:flex;align-items:center;justify-content:center;min-height:700px; }
+  model-viewer { width:50%;height:100%;min-height:700px;background:transparent;transform:translateX(-30px) translateY(-10px); }
+  .img-wrap { background:var(--white);border-radius:24px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:2rem; }
+  .img-wrap img { max-width:100%;max-height:380px;object-fit:contain; }
+  .detail-info { display:flex;flex-direction:column;gap:1rem; }
+  .detail-badge { display:inline-block;font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:6px;background:var(--blue);color:#fff;width:fit-content; }
+  .detail-badge.ลดราคา { background:#ff3b30; }
+  .detail-badge.ขายดี { background:#34c759; }
+  .detail-name { font-size:2.2rem;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1.2; }
+  .detail-subtitle { font-size:1rem;color:var(--muted);line-height:1.6; }
+  .detail-price { font-size:1.8rem;font-weight:700;color:var(--ink); }
+  .detail-desc { font-size:.9rem;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);padding-top:1rem; }
+  .detail-actions { display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem; }
+  .btn-buy { background:var(--blue);color:#fff;border:none;border-radius:12px;padding:.9rem;font-size:.95rem;font-weight:500;cursor:pointer;transition:background .2s;text-align:center;text-decoration:none;display:block; }
+  .btn-buy:hover { background:#0077ed; }
+  .btn-back { color:var(--muted);font-size:.85rem;text-decoration:none;margin-top:.5rem;display:inline-block; }
+  .btn-back:hover { color:var(--blue); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="detail-page">
+  <div class="detail-wrap">
+    <div>
+      {% if product.model_url %}
+      <div class="viewer-wrap">
+        <model-viewer src="{{ product.model_url }}" alt="{{ product.name }}" auto-rotate camera-controls shadow-intensity="1" exposure="0.8"></model-viewer>
+      </div>
+      {% elif product.image_url %}
+      <div class="img-wrap">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+      </div>
+      {% else %}
+      <div class="img-wrap">
+        <i class="bi bi-phone" style="font-size:8rem;color:#ddd;"></i>
+      </div>
+      {% endif %}
+    </div>
+    <div class="detail-info">
+      {% if product.badge %}<span class="detail-badge {{ product.badge }}">{{ product.badge }}</span>{% endif %}
+      <h1 class="detail-name">{{ product.name }}</h1>
+      {% if product.subtitle %}<p class="detail-subtitle">{{ product.subtitle }}</p>{% endif %}
+      <div class="detail-price">฿{{ '{:,.2f}'.format(product.price) }}</div>
+      {% if product.description %}<p class="detail-desc">{{ product.description }}</p>{% endif %}
+      <div class="detail-actions">
+        {% if current_user.is_authenticated %}
+        <form method="POST" action="{{ url_for('cart.add', product_id=product.id) }}">
+          <button type="submit" class="btn-buy">เลือกซื้อ</button>
+        </form>
+        {% else %}
+        <a href="{{ url_for('user.login') }}" class="btn-buy">เข้าสู่ระบบเพื่อซื้อ</a>
+        {% endif %}
+      </div>
+      <a class="btn-back" href="{{ url_for('product.iphone') }}">← กลับไปหน้า iPhone</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
