@@ -3,26 +3,154 @@
 
 {% block styles %}
 <style>
-  :root { --bg:#f5f5f7;--white:#fff;--ink:#1d1d1f;--muted:#6e6e73;--border:#d2d2d7;--blue:#0071e3;--red:#ff3b30; }
-  .mgmt-page { background:var(--bg);min-height:calc(100vh - 44px);padding:2.5rem 1.5rem; }
-  .mgmt-wrap { max-width:900px;margin:0 auto; }
-  .mgmt-header { display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem; }
-  .mgmt-title { font-size:1.8rem;font-weight:700;color:var(--ink);letter-spacing:-.02em; }
-  .btn-add { background:var(--blue);color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;font-size:.85rem;font-weight:500;cursor:pointer;text-decoration:none; }
-  .mgmt-table { background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);width:100%; }
-  .mgmt-table table { width:100%;border-collapse:collapse; }
-  .mgmt-table th { padding:.9rem 1.2rem;text-align:left;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border); }
-  .mgmt-table td { padding:.9rem 1.2rem;font-size:.88rem;color:var(--ink);border-bottom:1px solid rgba(0,0,0,.04); }
-  .mgmt-table tr:last-child td { border-bottom:none; }
-  .mgmt-table img { width:48px;height:48px;object-fit:contain;border-radius:8px;background:#f5f5f7;padding:4px; }
-  .badge { display:inline-block;font-size:.68rem;font-weight:700;padding:.2rem .5rem;border-radius:5px;background:#e5e5ea;color:var(--muted); }
-  .badge.ใหม่ { background:#0071e3;color:#fff; }
-  .badge.ลดราคา { background:#ff3b30;color:#fff; }
-  .badge.ขายดี { background:#34c759;color:#fff; }
-  .btn-edit { background:none;color:var(--blue);border:1px solid var(--blue);border-radius:6px;padding:.3rem .7rem;font-size:.78rem;cursor:pointer;text-decoration:none;margin-right:.4rem; }
-  .btn-delete { background:none;color:var(--red);border:1px solid var(--red);border-radius:6px;padding:.3rem .7rem;font-size:.78rem;cursor:pointer; }
-  .btn-delete:hover { background:var(--red);color:#fff; }
-  .empty { text-align:center;padding:3rem;color:var(--muted); }
+  :root {
+    --bg: #f5f5f7;
+    --white: #fff;
+    --ink: #1d1d1f;
+    --muted: #6e6e73;
+    --border: #d2d2d7;
+    --blue: #0071e3;
+    --red: #ff3b30;
+  }
+
+  .mgmt-page {
+    background: var(--bg);
+    min-height: calc(100vh - 44px);
+    padding: 2.5rem 1.5rem;
+  }
+
+  .mgmt-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .mgmt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .mgmt-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -.02em;
+  }
+
+  .btn-add {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: .5rem 1rem;
+    font-size: .85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .mgmt-table {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+    width: 100%;
+  }
+
+  .mgmt-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .mgmt-table th {
+    padding: .9rem 1.2rem;
+    text-align: left;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mgmt-table td {
+    padding: .9rem 1.2rem;
+    font-size: .88rem;
+    color: var(--ink);
+    border-bottom: 1px solid rgba(0, 0, 0, .04);
+  }
+
+  .mgmt-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .mgmt-table img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f5f5f7;
+    padding: 4px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: .68rem;
+    font-weight: 700;
+    padding: .2rem .5rem;
+    border-radius: 5px;
+    background: #e5e5ea;
+    color: var(--muted);
+  }
+
+  .badge.ใหม่ {
+    background: #0071e3;
+    color: #fff;
+  }
+
+  .badge.ลดราคา {
+    background: #ff3b30;
+    color: #fff;
+  }
+
+  .badge.ขายดี {
+    background: #34c759;
+    color: #fff;
+  }
+
+  .btn-edit {
+    background: none;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 6px;
+    padding: .3rem .7rem;
+    font-size: .78rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: .4rem;
+  }
+
+  .btn-delete {
+    background: none;
+    color: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 6px;
+    padding: .3rem .7rem;
+    font-size: .78rem;
+    cursor: pointer;
+  }
+
+  .btn-delete:hover {
+    background: var(--red);
+    color: #fff;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--muted);
+  }
 </style>
 {% endblock %}
 
@@ -53,7 +181,8 @@
               {% if p.image_url %}
               <img src="{{ p.image_url }}" alt="{{ p.name }}">
               {% else %}
-              <div style="width:48px;height:48px;background:#f0f0f5;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+              <div
+                style="width:48px;height:48px;background:#f0f0f5;border-radius:8px;display:flex;align-items:center;justify-content:center;">
                 <i class="bi bi-laptop" style="color:#ccc;"></i>
               </div>
               {% endif %}
@@ -70,14 +199,18 @@
               {% else %}-{% endif %}
             </td>
             <td>
-              <a href="{{ url_for('product.edit', id=p.id) }}" class="btn-edit">แก้ไข</a>
-              <form method="POST" action="{{ url_for('product.delete', id=p.id) }}" style="display:inline;" onsubmit="return confirm('ลบสินค้านี้?')">
-                <button type="submit" class="btn-delete">ลบ</button>
-              </form>
+              <div style="display:flex;gap:.6rem;align-items:center;">
+                <a href="{{ url_for('product.edit', id=p.id) }}" class="btn-edit">แก้ไข</a>
+                <form method="POST" action="{{ url_for('product.delete', id=p.id) }}" style="margin:0;" onsubmit="return confirm('ลบสินค้านี้?')">
+                  <button type="submit" class="btn-delete">ลบ</button>
+                </form>
+              </div>
             </td>
           </tr>
           {% else %}
-          <tr><td colspan="6" class="empty">ยังไม่มีสินค้า</td></tr>
+          <tr>
+            <td colspan="6" class="empty">ยังไม่มีสินค้า</td>
+          </tr>
           {% endfor %}
         </tbody>
       </table>
