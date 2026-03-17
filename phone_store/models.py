@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     email:    Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
     fullname: Mapped[str] = mapped_column(String(100), nullable=True)
-    avatar:   Mapped[str] = mapped_column(String(50), default='default.png')
+    avatar:   Mapped[str] = mapped_column(String(50), default='user.png')
 
     products:   Mapped[List['Product']]  = relationship(back_populates='user')
     cart_items: Mapped[List['CartItem']] = relationship(back_populates='user', cascade='all, delete-orphan')

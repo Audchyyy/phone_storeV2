@@ -18,7 +18,7 @@ def create_app():
     login_manager.login_message = 'กรุณาเข้าสู่ระบบก่อนเข้าถึงหน้านี้'
     login_manager.login_message_category = 'warning'
 
-    from phone_store.product.routes import product_bp  # ← ย้ายมาข้างใน
+    from phone_store.product.routes import product_bp  
 
     app.register_blueprint(core_bp,    url_prefix='/')
     app.register_blueprint(user_bp,    url_prefix='/user')

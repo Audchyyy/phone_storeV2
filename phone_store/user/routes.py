@@ -5,6 +5,7 @@ from phone_store.extensions import db, bcrypt
 from phone_store.forms import UpdateAccountForm, LoginForm, RegisterForm
 import os, secrets
 from PIL import Image
+from phone_store.forms import ChangePasswordForm
 
 user_bp = Blueprint('user', __name__, template_folder='templates', static_folder='static')
 
@@ -64,3 +65,17 @@ def account():
         return redirect(url_for('user.account'))
     return render_template('user/account.html', title='Account', form=form,
                            avatar_pic=current_user.avatar)
+
+
+@user_bp.route('/change-password', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if bcrypt.check_password_hash(current_user.password, form.current_password.data):
+            current_user.password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+            db.session.commit()
+            flash('เปลี่ยนรหัสผ่านสำเร็จ!', 'success')
+            return redirect(url_for('user.account'))
+        flash('รหัสผ่านปัจจุบันไม่ถูกต้อง', 'danger')
+    return render_template('user/change_password.html', title='Change Password', form=form)

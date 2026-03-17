@@ -19,7 +19,7 @@ body {
     padding-top: 44px; /
 }
 
-/* ─── NAVBAR ─── */
+
 nav {
     position: fixed;
     top: 0;
@@ -60,7 +60,7 @@ nav {
     font-size: 18px;
 }
 
-/* ─── ACCOUNT DROPDOWN ─── */
+
 .nav-account {
     position: relative;
     list-style: none;
@@ -123,7 +123,7 @@ nav {
     margin: 0.3rem 0;
 }
 
-/* ─── FOOTER ─── */
+
 footer {
     text-align: center;
     padding: 30px;

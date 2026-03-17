@@ -50,3 +50,9 @@ class ProductForm(FlaskForm):
     model_url   = StringField(label='URL 3D Model (.glb)', validators=[Optional()])
     badge       = StringField(label='Badge', validators=[Optional(), Length(max=50)])
     submit      = SubmitField(label='บันทึก')
+
+class ChangePasswordForm(FlaskForm):
+    current_password = PasswordField(label='รหัสผ่านปัจจุบัน', validators=[DataRequired()])
+    new_password     = PasswordField(label='รหัสผ่านใหม่', validators=[DataRequired()])
+    confirm_password = PasswordField(label='ยืนยันรหัสผ่านใหม่', validators=[DataRequired(), EqualTo('new_password')])
+    submit           = SubmitField(label='เปลี่ยนรหัสผ่าน')

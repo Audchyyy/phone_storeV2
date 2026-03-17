@@ -1,4 +1,4 @@
-/* ─── HERO VIDEO ─── */
+
 .hero {
     position: relative;
     height: 100vh;
@@ -25,7 +25,7 @@
     background: rgba(0, 0, 0, 0.35);
 }
 
-/* ─── PRODUCT SECTION (MacBook) ─── */
+
 .product {
     height: 100vh;
     background: black;
@@ -78,7 +78,7 @@
     margin-bottom: 20px;
 }
 
-/* ─── PURCHASE BAR ─── */
+
 .purchase-bar {
     display: flex;
     align-items: center;
@@ -128,7 +128,7 @@
     background-color: #0077ed;
 }
 
-/* ─── IPHONE CARD ─── */
+
 .products {
     display: grid;
     grid-template-columns: 1fr;
@@ -194,7 +194,7 @@
     font-weight: 400;
 }
 
-/* ─── 3 SMALL CARDS ─── */
+
 .products-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

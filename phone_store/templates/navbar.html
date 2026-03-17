@@ -47,9 +47,9 @@
           {% if current_user.is_authenticated %}
             <p class="menu-username">{{ current_user.username }}</p>
             <hr />
-            <a href="{{ url_for('product.products') }}">จัดการสินค้า</a>
-            <a href="{{ url_for('user.account') }}">บัญชีของฉัน</a>
-            <a href="{{ url_for('user.logout') }}">Logout</a>
+            <a href="{{ url_for('product.products') }}"><i class="bi bi-cart" style="margin-right:6px;"></i>จัดการสินค้า</a>
+            <a href="{{ url_for('user.account') }}"><i class="bi bi-person-square" style="margin-right:6px;"></i>บัญชีของฉัน</a>
+            <a href="{{ url_for('user.logout') }}"><i class="bi bi-box-arrow-right" style="margin-right:6px;"></i> ออกจากระบบ</a>
           {% else %}
             <a href="{{ url_for('user.login') }}"><i class="bi bi-person-circle" style="margin-right:6px;"></i>ลงชื่อเข้าใช้</a>
             <a href="{{ url_for('user.register') }}"><i class="bi bi-clipboard-plus-fill" style="margin-right:6px;"></i> สมัครสมาชิก</a>
@@ -92,7 +92,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeSearch();
 });
 
-// คลิกขอบนอก search box แล้วปิด
+
 document.getElementById('searchOverlay').addEventListener('click', function(e) {
   if (!e.target.closest('.search-overlay-inner')) closeSearch();
 });
