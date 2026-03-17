@@ -55,3 +55,31 @@ class CartItem(db.Model):
 
     def __repr__(self):
         return f'<CartItem: {self.product_id} x{self.quantity}>'
+
+
+class Order(db.Model):
+    id:         Mapped[int]      = mapped_column(Integer, primary_key=True)
+    user_id:    Mapped[int]      = mapped_column(Integer, ForeignKey('user.id'), nullable=False)
+    fullname:   Mapped[str]      = mapped_column(String(100), nullable=True)
+    email:      Mapped[str]      = mapped_column(String(100), nullable=True)
+    address:    Mapped[str]      = mapped_column(String(255), nullable=True)
+    phone:      Mapped[str]      = mapped_column(String(20), nullable=True)
+    total:      Mapped[float]    = mapped_column(Float, nullable=False)
+    ordered_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+    user:   Mapped['User']            = relationship()
+    items:  Mapped[List['OrderItem']] = relationship(back_populates='order', cascade='all, delete-orphan')
+
+class OrderItem(db.Model):
+    id:         Mapped[int]   = mapped_column(Integer, primary_key=True)
+    order_id:   Mapped[int]   = mapped_column(Integer, ForeignKey('order.id'), nullable=False)
+    product_id: Mapped[int]   = mapped_column(Integer, ForeignKey('product.id'), nullable=True)
+    name:       Mapped[str]   = mapped_column(String(100), nullable=False)
+    price:      Mapped[float] = mapped_column(Float, nullable=False)
+    quantity:   Mapped[int]   = mapped_column(Integer, nullable=False)
+
+    order:   Mapped['Order']   = relationship(back_populates='items')
+    product: Mapped['Product'] = relationship()
+
+    def subtotal(self):
+        return self.price * self.quantity

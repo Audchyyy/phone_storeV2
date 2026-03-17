@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, flash, request, jsonify
 from flask_login import login_required, current_user
 from phone_store.cart import cart_bp
 from phone_store.extensions import db
-from phone_store.models import CartItem, Product
+from phone_store.models import CartItem, Product, Order, OrderItem
 
 @cart_bp.route('/')
 @login_required
@@ -69,8 +69,28 @@ def checkout():
         return redirect(url_for('cart.index'))
     total = sum(item.subtotal() for item in items)
     if request.method == 'POST':
+        order = Order(
+            user_id=current_user.id,
+            fullname=request.form.get('fullname'),
+            email=request.form.get('email'),
+            address=request.form.get('address'),
+            phone=request.form.get('phone'),
+            total=total
+        )
+        db.session.add(order)
+        db.session.flush()
+        for item in items:
+            order_item = OrderItem(
+                order_id=order.id,
+                product_id=item.product_id,
+                name=item.product.name,
+                price=item.product.price,
+                quantity=item.quantity
+            )
+            db.session.add(order_item)
         CartItem.query.filter_by(user_id=current_user.id).delete()
         db.session.commit()
         flash('สั่งซื้อสำเร็จ! ขอบคุณที่ใช้บริการ 🎉', 'success')
         return redirect(url_for('core.index'))
     return render_template('cart/checkout.html', title='ยืนยันการสั่งซื้อ', items=items, total=total)
+

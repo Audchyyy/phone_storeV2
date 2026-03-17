@@ -42,8 +42,8 @@
     <form action="" method="post" novalidate>
       {{ form.hidden_tag() }}
       <div class="ap-field">
-        {{ form.email.label }}
-        {{ form.email(placeholder='name@example.com') }}
+        {{ form.email.label('Email / Username') }}
+        {{ form.email(placeholder='Email หรือ Username') }}
         {% for e in form.email.errors %}<div class="ap-invalid">{{ e }}</div>{% endfor %}
       </div>
       <div class="ap-field">

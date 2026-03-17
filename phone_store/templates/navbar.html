@@ -40,8 +40,14 @@
         </a>
       </li>
       <li class="nav-account">
-        <button class="account-btn" onclick="toggleMenu()">
-          <i class="bi bi-person"></i>
+        <button class="account-btn" onclick="toggleMenu()" style="display:flex;align-items:center;gap:.5rem;background:none;border:none;cursor:pointer;color:inherit;">
+          {% if current_user.is_authenticated %}
+            <img src="{{ url_for('user.static', filename='img/' + current_user.avatar) }}" 
+                style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+            <span style="font-size:.85rem;">{{ current_user.username }}</span>
+          {% else %}
+            <i class="bi bi-person"></i>
+          {% endif %}
         </button>
         <div class="account-menu" id="accountMenu">
           {% if current_user.is_authenticated %}
@@ -49,6 +55,7 @@
             <hr />
             <a href="{{ url_for('product.products') }}"><i class="bi bi-cart" style="margin-right:6px;"></i>จัดการสินค้า</a>
             <a href="{{ url_for('user.account') }}"><i class="bi bi-person-square" style="margin-right:6px;"></i>บัญชีของฉัน</a>
+            <a href="{{ url_for('user.orders') }}"><i class="bi bi-clock-history" style="margin-right:6px;"></i>ประวัติการสั่งซื้อ</a>
             <a href="{{ url_for('user.logout') }}"><i class="bi bi-box-arrow-right" style="margin-right:6px;"></i> ออกจากระบบ</a>
           {% else %}
             <a href="{{ url_for('user.login') }}"><i class="bi bi-person-circle" style="margin-right:6px;"></i>ลงชื่อเข้าใช้</a>

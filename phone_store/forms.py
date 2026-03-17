@@ -23,7 +23,7 @@ class RegisterForm(FlaskForm):
             raise ValidationError('Email นี้ถูกใช้งานแล้ว')
 
 class LoginForm(FlaskForm):
-    email    = EmailField(label='Email', validators=[DataRequired(), Email()])
+    email    = StringField(label='Email / Username', validators=[DataRequired()])
     password = PasswordField(label='Password', validators=[DataRequired()])
     remember = BooleanField(label='Keep me signed in')
     submit   = SubmitField(label='Sign In')
