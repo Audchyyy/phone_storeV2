@@ -50,7 +50,7 @@
     {% for order in orders %}
     <div class="od-card">
       <div class="od-card-head">
-        <span class="od-card-date">🗓 {{ order.ordered_at.strftime('%d/%m/%Y %H:%M') }}</span>
+        <span class="od-card-date">🗓 {{ order.ordered_at.strftime('%d/%m/%Y') }}</span>
         <span class="od-card-total">฿{{ '{:,.2f}'.format(order.total) }}</span>
       </div>
       {% for item in order.items %}
