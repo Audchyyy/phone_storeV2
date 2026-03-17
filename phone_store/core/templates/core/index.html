@@ -9,15 +9,22 @@
 {% block content %}
 
 <section class="hero">
-  <video autoplay muted loop class="hero-video">
-    <source src="{{ url_for('static', filename='video/bg.mp4') }}" type="video/mp4">
-  </video>
+  <div class="hero-video">
+    <iframe 
+      src="https://www.youtube.com/embed/IR5pgupnVZo?autoplay=1&mute=1&loop=1&playlist=IR5pgupnVZo&controls=0&showinfo=0&rel=0&modestbranding=1"
+      style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200vh;min-width:100%;height:112.5vh;min-height:100%;border:none;"
+      allow="autoplay; encrypted-media">
+    </iframe>
+  </div>
 </section>
 
 <section class="product">
-  <video class="product-video" autoplay muted loop>
-    <source src="{{ url_for('static', filename='video/Macbook.mp4') }}" type="video/mp4">
-  </video>
+  <iframe
+    src="https://www.youtube.com/embed/GriXfu4tL30?autoplay=1&mute=1&loop=1&playlist=GriXfu4tL30&controls=0&showinfo=0&rel=0&modestbranding=1"
+    class="product-video"
+    style="border:none;pointer-events:none;height:394px;"
+    allow="autoplay; encrypted-media">
+  </iframe>
   <div class="product-title">MacBook Air</div>
   <h2 class="apple-headline">ก้าวข้ามทุกความเร็ว</h2>
   <p class="chip-info">พลังเร็วติดปีก</p>
@@ -44,9 +51,11 @@
 
 <section class="products-row">
   <div class="small-card" id="ipad-card">
-    <video autoplay muted loop playsinline class="card-video">
-      <source src="{{ url_for('static', filename='video/iPad.mp4') }}" type="video/mp4">
-    </video>
+    <iframe
+      src="https://www.youtube.com/embed/m30bUKaNfhY?autoplay=1&mute=1&loop=1&playlist=m30bUKaNfhY&controls=0&showinfo=0&rel=0&modestbranding=1"
+      class="card-video-iframe"
+      allow="autoplay; encrypted-media">
+    </iframe>
     <div class="small-card-content pos-center">
       <h1 class="apple-gradient-text">iPad Pro</h1>
       <p>อัดฉีดพลังแรงๆๆๆๆ</p>
@@ -58,9 +67,11 @@
   </div>
 
   <div class="small-card" id="watch-card">
-    <video autoplay muted loop playsinline class="card-video">
-      <source src="{{ url_for('static', filename='video/Watch.mp4') }}" type="video/mp4">
-    </video>
+    <iframe
+        src="https://www.youtube.com/embed/x3pV7rvvJQA?autoplay=1&mute=1&loop=1&playlist=x3pV7rvvJQA&controls=0&showinfo=0&rel=0&modestbranding=1"
+        class="card-video-iframe"
+        allow="autoplay; encrypted-media">
+    </iframe>
     <div class="small-card-content pos-center">
       <h1 class="apple-gradient-text">Watch Ultra</h1>
       <p>นาฬิกาสปอร์ตและการผจญภัยที่เหนือชั้น</p>
@@ -72,9 +83,11 @@
   </div>
 
   <div class="small-card" id="airpods-card">
-    <video autoplay muted loop playsinline class="card-video">
-      <source src="{{ url_for('static', filename='video/AirPods.mp4') }}" type="video/mp4">
-    </video>
+    <iframe
+      src="https://www.youtube.com/embed/EMmKs8vMKhU?autoplay=1&mute=1&loop=1&playlist=EMmKs8vMKhU&controls=0&showinfo=0&rel=0&modestbranding=1"
+      class="card-video-iframe"
+      allow="autoplay; encrypted-media">
+    </iframe>
     <div class="small-card-content pos-center">
       <h1 class="apple-gradient-text">AirPods Pro 3</h1>
       <p>การตัดเสียงรบกวนแบบแอ็คทีฟ ในแบบที่คุณไม่เคยได้ยินมาก่อน</p>
